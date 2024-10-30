@@ -6,7 +6,7 @@ import { FormControl, InputGroup, Container, Button } from "react-bootstrap";
 const clientId = import.meta.env.VITE_CLIENT_ID;
 const clientSecret = import.meta.env.VITE_CLIENT_SECRET;
 
-//import useEffect && useEffect here: 
+//import useEffect && useState here: 
 import { useState, useEffect } from "react";
 
 const [searchInput, setSearchInput] = useState("");
