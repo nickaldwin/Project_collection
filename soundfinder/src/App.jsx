@@ -16,11 +16,21 @@ const [accessToken, setAccessToken] = useState("");
 useEffect(() => {
   let authParams = { 
     method: "POST",
-    handlers:{
-      
-    }
-  }
-})
+    handlers: {
+      "Content-Type": "application/x-www-form-urlenloaded",
+    },
+    body:
+    "grant_type=client_credential&client_id=" +
+    clientId +
+    "&client_secret" +
+    clientSecret,
+  };
+    fetch("https//accounts.spotify.com/api/token", authParams)
+    .then((result) => result.json())
+    .then((data) => {
+      setAccessToken(data.access_Token);
+    });
+}, []);
 
 
 
