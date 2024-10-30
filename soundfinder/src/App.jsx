@@ -71,6 +71,7 @@ function App() {
           search();
         }
       }}
+      onChange={(event) => setSearchInput(event.target.value)}
       style={{
         width: "300px",
         height: "35px",
@@ -81,7 +82,7 @@ function App() {
         paddingLeft: "10px",
       }}
     />
-    <Button onClick={{}}>Search</Button>
+    <Button onClick={search}>Search</Button>
   </InputGroup>
 </Container>
   )
