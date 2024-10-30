@@ -8,9 +8,9 @@ const clientSecret = import.meta.env.VITE_CLIENT_SECRET;
 
 //import useEffect && useState here: 
 import { useState, useEffect } from "react";
-
 const [searchInput, setSearchInput] = useState("");
 const [accessToken, setAccessToken] = useState("");
+const [albums, setAlbums] = useState([]);
 
 // use the useEffect to fetch the accesToken
 useEffect(() => {
@@ -48,6 +48,18 @@ async function search(){
   .this((result) => result.json())
   .then((data) => {
     return data.artists.items[0].id;
+  });
+
+  // artist albums
+  await fetch(
+    "https://api.spotify.com/v1/artists/" +
+    artistID +
+    "/albums?include_groups=albums&market=US&limit50",
+    artistParams
+  ) 
+  .then((result) => result.json())
+  .then((data) => {
+    setAlbums(data.items);
   });
 }
 
