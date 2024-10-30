@@ -1,17 +1,14 @@
 
 import './App.css'
-import { FormControl, InputGroup, Container, Button } from "react-bootstrap";
-
+import { FormControl, InputGroup, Container, Button, Row,  Card,} from "react-bootstrap";
 //import spotify api key variables
 const clientId = import.meta.env.VITE_CLIENT_ID;
 const clientSecret = import.meta.env.VITE_CLIENT_SECRET;
-
 //import useEffect && useState here: 
 import { useState, useEffect } from "react";
 const [searchInput, setSearchInput] = useState("");
 const [accessToken, setAccessToken] = useState("");
 const [albums, setAlbums] = useState([]);
-
 // use the useEffect to fetch the accesToken
 useEffect(() => {
   let authParams = { 
@@ -49,7 +46,6 @@ async function search(){
   .then((data) => {
     return data.artists.items[0].id;
   });
-
   // artist albums
   await fetch(
     "https://api.spotify.com/v1/artists/" +
@@ -62,8 +58,6 @@ async function search(){
     setAlbums(data.items);
   });
 }
-
-
 function App() {
  return (
   <Container>
@@ -72,6 +66,11 @@ function App() {
       placeholder="Search For Artist"
       type="input"
       aria-label="Search for an Artist"
+      onKeyDown={(event) => {
+        if(event.key === "Enter"){
+          search();
+        }
+      }}
       style={{
         width: "300px",
         height: "35px",
@@ -82,7 +81,6 @@ function App() {
         paddingLeft: "10px",
       }}
     />
-
     <Button onClick={{}}>Search</Button>
   </InputGroup>
 </Container>
