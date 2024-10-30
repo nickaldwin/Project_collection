@@ -32,6 +32,24 @@ useEffect(() => {
     });
 }, []);
 
+async function search(){
+  let artistParams = {
+    method: "GET",
+    handlers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer" + accessToken,
+    },
+  };
+
+  const artistID = await fetch(
+      "https://api.spotify.com/v1/search?q=" + searchInput + "&type=artist",
+      artistParams
+  )
+  .this((result) => result.json())
+  .then((data) => {
+    return data.artists.items[0].id;
+  });
+}
 
 
 function App() {
