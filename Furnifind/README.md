@@ -11,7 +11,7 @@
 
 ## Technologies Used
 
-- [x] **React and vite **: For building a responsive, interactive user interface.
+- [x] **React and vite**: For building a responsive, interactive user interface.
 - [] **Backend API (if applicable)**: Mention the tech stack or frameworks used.
 - [] **Database**: If you're using any specific database, mention it here.
 - [] **Authentication**: Note any libraries or tools used for login/signup functionality.
